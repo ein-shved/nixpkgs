@@ -5,6 +5,7 @@
   nix,
   rustPlatform,
   installShellFiles,
+  callPackage,
 }:
 let
   version = "0.4.52";
@@ -35,6 +36,7 @@ rustPlatform.buildRustPackage rec {
     tests = {
       inherit nix;
     };
+    inherit (callPackage ./mkbook {}) mkbook;
   };
 
   meta = {
